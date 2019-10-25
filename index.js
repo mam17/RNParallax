@@ -247,7 +247,7 @@ class RNParallax extends Component {
   }
 
   renderHeaderBackground() {
-    const { backgroundImage, backgroundColor } = this.props;
+    const { backgroundImage, backgroundColor, headerStyle } = this.props;
     const imageOpacity = this.getImageOpacity();
 
     return (
@@ -258,6 +258,7 @@ class RNParallax extends Component {
             height: this.getHeaderHeight(),
             opacity: imageOpacity,
             backgroundColor: backgroundImage ? 'transparent' : backgroundColor,
+            headerStyle
           },
         ]}
       >
@@ -364,6 +365,7 @@ RNParallax.propTypes = {
   navbarColor: PropTypes.string,
   title: PropTypes.any,
   titleStyle: PropTypes.any,
+  headerStyle: PropTypes.object,
   headerTitleStyle: PropTypes.any,
   headerMaxHeight: PropTypes.number,
   headerMinHeight: PropTypes.number,
@@ -387,6 +389,7 @@ RNParallax.defaultProps = {
   backgroundImage: null,
   title: null,
   titleStyle: styles.headerText,
+  headerStyle: null,
   headerTitleStyle: null,
   headerMaxHeight: DEFAULT_HEADER_MAX_HEIGHT,
   headerMinHeight: DEFAULT_HEADER_MIN_HEIGHT,
