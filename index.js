@@ -258,7 +258,7 @@ class RNParallax extends Component {
             height: this.getHeaderHeight(),
             opacity: imageOpacity,
             backgroundColor: backgroundImage ? 'transparent' : backgroundColor,
-            headerStyle
+            ...headerStyle
           },
         ]}
       >
