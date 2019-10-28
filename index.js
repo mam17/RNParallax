@@ -8,6 +8,7 @@ import {
   View,
   Dimensions,
   StatusBar,
+  ImageBackground
 } from 'react-native';
 
 const {
@@ -146,7 +147,7 @@ class RNParallax extends Component {
     const { scrollY } = this.state;
     return scrollY.interpolate({
       inputRange: this.getInputRange(),
-      outputRange: [1, 1, 0],
+      outputRange: [1, 1, 1],
       extrapolate: 'clamp',
     });
   }
@@ -195,17 +196,23 @@ class RNParallax extends Component {
     const imageScale = this.getImageScale();
 
     return (
-      <Animated.Image
-        style={[
-          styles.backgroundImage,
-          {
-            height: this.getHeaderMaxHeight(),
-            opacity: imageOpacity,
-            transform: [{ translateY: imageTranslate }, { scale: imageScale }],
-          },
-        ]}
-        source={backgroundImage}
-      />
+        <Animated.View
+          style={[
+            styles.backgroundImage,
+            {
+              height: this.getHeaderMaxHeight(),
+              opacity: imageOpacity,
+              position: `relative`,
+              transform: [{ translateY: imageTranslate }, { scale: imageScale }],
+            },
+          ]}
+        >
+          <ImageBackground 
+            style={{width: '100%', height: '100%' }}
+            resizeMode="contain"
+            source={backgroundImage} 
+          />
+        </Animated.View>
     );
   }
 
